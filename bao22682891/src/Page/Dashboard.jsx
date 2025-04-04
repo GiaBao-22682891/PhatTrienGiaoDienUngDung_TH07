@@ -31,7 +31,7 @@ export default function Dashboard() {
                 <div>
                     <h1>V2.0 is available</h1>
                     <button>
-                    
+                        Try now
                     </button>
                 </div>
             </div>
@@ -40,6 +40,9 @@ export default function Dashboard() {
         <div className='dashboard_content'>
             <div className='title'>
                 <h2>Dashboard</h2>
+                <div>
+                    <input type="text" />
+                </div>
             </div>
             <h3>
                 Overview
@@ -55,9 +58,19 @@ export default function Dashboard() {
                     hello
                 </div>
             </div>
-            <h3>
-                Detailed report
-            </h3>
+            <div className='detail_report'>
+                <h3>
+                    Detailed report
+                </h3>
+                <div>
+                    <button>
+                        Import
+                    </button>
+                    <button>
+                        Export
+                    </button>
+                </div>
+            </div>
         </div>
         
       </div>
