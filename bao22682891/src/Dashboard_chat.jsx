@@ -1,6 +1,6 @@
 import "./Dashboard_chat.css";
 
-export default function Dashboard() {
+export default function Dashboard_chat() {
   return (
     <div className="dashboard-container">
       {/* Sidebar */}
