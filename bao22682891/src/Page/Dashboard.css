@@ -46,7 +46,7 @@
 
 .dashboard_content {
     flex: 1; /*fill the rest*/
-    margin: 0;
+    margin: 10px;
     padding: 0;
 }
 
@@ -56,9 +56,9 @@
     color: #e60073;
     height: 75px;
     border-bottom: 1px ridge black;
-
+    display: flex;
     align-items: center;   /* Centers text vertically */
-    justify-content: center; /* Centers text horizontally */
+    justify-content: space-between; /* Centers text horizontally */
 }
 
 .title h2 {
@@ -81,3 +81,9 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
   }
+
+.detail_report {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
