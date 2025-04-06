@@ -1,76 +1,70 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './Dashboard.css'
+import {getData} from '../data/data'
+import { CustomerList } from '../components/CustomerList';
 
 export default function Dashboard() {
+    const [customerData, setData] = useState([]);
+    const [reload, setReload] = useState(false)
+
+    useEffect (() => {
+        const fetchData = async () => {
+            setData(await getData())
+            console.log("Rerendering")
+        }
+        fetchData();
+    }, [reload])
+
+
+    console.log(customerData)
+
     return (
-      <div className='container'>
-        <div className='sidebar'>
-            <img src="../public/logo.png" alt="" />
-            <nav className='head_sidebar'>
-                <div>
-                    <p>Dashboard</p>
-                </div>
-                <div>
-                    <p>Project</p>
-                </div>
-                <div>
-                    <p>Teams</p>
-                </div>
-                <div>
-                    <p>Analytics</p>
-                </div>
-                <div>
-                    <p>Messages</p>
-                </div>
-                <div>
-                    <p>Integrations</p>
-                </div>
-            </nav>
-            <div className='bottom_sidebar'>
-                <img src="../public/randomPicture.png" alt="" />
-                <div>
-                    <h1>V2.0 is available</h1>
-                    <button>
-                        Try now
-                    </button>
-                </div>
+      <div>
+        <h3>
+            Overview
+        </h3>
+        <div className='overview_section'>
+            <div className='overview_card'>
+                hello
+            </div>
+            <div className='overview_card'>
+                hello
+            </div>
+            <div className='overview_card'>
+                hello
+            </div>
+        </div>
+        <div className='detail_report'>
+            <h3>
+                Detailed report
+            </h3>
+            <div>
+                <button>
+                    Import
+                </button>
+                <button>
+                    Export
+                </button>
             </div>
         </div>
 
-        <div className='dashboard_content'>
-            <div className='title'>
-                <h2>Dashboard</h2>
-                <div>
-                    <input type="text" />
-                </div>
-            </div>
-            <h3>
-                Overview
-            </h3>
-            <div className='overview_section'>
-                <div className='overview_card'>
-                    hello
-                </div>
-                <div className='overview_card'>
-                    hello
-                </div>
-                <div className='overview_card'>
-                    hello
-                </div>
-            </div>
-            <div className='detail_report'>
-                <h3>
-                    Detailed report
-                </h3>
-                <div>
-                    <button>
-                        Import
-                    </button>
-                    <button>
-                        Export
-                    </button>
-                </div>
-            </div>
+        <div className="detailed-report">
+            <table className="report-table">
+                <thead>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Company</th>
+                    <th>Order Value</th>
+                    <th>Order Date</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {customerData.map((x) => (
+                        <CustomerList customer={x} key={x.id}/>
+                    ))}
+                </tbody>
+            </table>
         </div>
         
       </div>
