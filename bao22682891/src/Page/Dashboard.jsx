@@ -51,13 +51,14 @@ export default function Dashboard() {
         <div className="detailed-report">
             <table className="report-table">
                 <thead>
-                <tr>
-                    <th>Customer Name</th>
-                    <th>Company</th>
-                    <th>Order Value</th>
-                    <th>Order Date</th>
-                    <th>Status</th>
-                </tr>
+                    <tr className='fix_align'>
+                        <th>Customer Name</th>
+                        <th>Company</th>
+                        <th>Order Value</th>
+                        <th>Order Date</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
                 </thead>
                 <tbody>
                     {customerData.map((x) => (
