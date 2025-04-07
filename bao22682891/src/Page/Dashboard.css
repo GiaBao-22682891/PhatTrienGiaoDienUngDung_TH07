@@ -164,6 +164,10 @@
     cursor: pointer;
 }
 
+.editbutton:hover {
+    color:#e60073;
+}
+
 tr td {
     text-align: left;
     /* vertical-align: middle; */

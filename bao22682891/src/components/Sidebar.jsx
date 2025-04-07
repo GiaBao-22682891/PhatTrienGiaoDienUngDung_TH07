@@ -1,5 +1,7 @@
 import React from 'react'
 import '../Page/Dashboard.css'
+import { Link } from 'react-router-dom'
+
 
 export const Sidebar = () => {
   return (
@@ -7,22 +9,22 @@ export const Sidebar = () => {
             <img src="../public/logo.png" alt="" />
             <nav className='head_sidebar'>
                 <div>
-                    <p>Dashboard</p>
+                    <Link to={'/'}> Dashboard </Link>
                 </div>
                 <div>
-                    <p>Project</p>
+                    <Link to={'/project'}>Projects</Link>
                 </div>
                 <div>
-                    <p>Teams</p>
+                    <Link to={'/team'}>Teams</Link>
                 </div>
                 <div>
-                    <p>Analytics</p>
+                    <Link to={'/analytic'}>Analytics</Link>
                 </div>
                 <div>
-                    <p>Messages</p>
+                    <Link to={'/message'}>Messages</Link>
                 </div>
                 <div>
-                    <p>Integrations</p>
+                    <Link to={'/integration'}>Integrations</Link>
                 </div>
             </nav>
             {/* <div className='bottom_sidebar'>
