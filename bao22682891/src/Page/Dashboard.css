@@ -6,6 +6,7 @@
 
 }
 
+/* sidebar */
 .sidebar {
     width: 300px;
     border-right: 1px ridge black;
@@ -24,6 +25,11 @@
 
 .head_sidebar {
     height: 30%;
+}
+
+.head_sidebar div:hover {
+    background-color: #e60073;
+    color: white;
 }
 
 .bottom_sidebar{
@@ -57,6 +63,7 @@
     padding: 0;
 }
 
+/* header */
 .title {
     font-size: 24px;
     font-weight: bold;
@@ -75,6 +82,38 @@
     font-family: "arial";
 }
 
+.title div {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+}
+
+
+.title div input {
+    border: 0;
+    border-radius: 10px;
+    background: url('../glass_icon.png');
+    background-size: 16px 16px; /* icon size */
+    background-position: 10px center; /* position icon inside input */
+    background-repeat: no-repeat;
+    padding-left: 35px; /* add space for icon */
+    background-color: #eaeaea;
+    height: 30px;
+}
+
+.title div img {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.title div .avatarPlaceholder {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    /* cursor: default; */
+}
+
 .overview_section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -91,6 +130,8 @@
     text-align: center;
   }
 
+
+/* Table */
 .detail_report {
     display: flex;
     align-items: center;
@@ -103,20 +144,31 @@
     margin-top: 10px;
   }
 
-.avatar {
+.profilename {
     display: flex;
     justify-items: center;
     align-items: center;
     gap: 5px;
 }
 
-.avatar img {
+.profilename img {
     border-radius: 100px;
     height: 45px;
     width: 45px;
 
 }
 
+.editbutton {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
 tr td {
-    text-align: center;
+    text-align: left;
+    /* vertical-align: middle; */
+}
+
+.fix_align {
+    text-align: left;
 }

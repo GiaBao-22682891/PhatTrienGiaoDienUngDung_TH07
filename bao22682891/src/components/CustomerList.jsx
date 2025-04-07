@@ -4,7 +4,7 @@ import '../Page/Dashboard.css'
 export const CustomerList = ({customer}) => {
   return (
       <tr>
-        <td className='avatar'>
+        <td className='profilename'>
           <img src={customer.avatar} alt="" />
           <p> {customer.Fullname} </p>
         </td> 
@@ -19,6 +19,9 @@ export const CustomerList = ({customer}) => {
         </td>
         <td>
           <p> {customer.status} </p>
+        </td>
+        <td>
+          <img src="../pen.png" alt="" className='editbutton'/>
         </td>
       </tr>
         
