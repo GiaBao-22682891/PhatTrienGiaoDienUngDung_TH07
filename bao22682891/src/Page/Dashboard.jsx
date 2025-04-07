@@ -25,13 +25,16 @@ export default function Dashboard() {
         </h3>
         <div className='overview_section'>
             <div className='overview_card'>
-                hello
+                <strong>Turnover</strong>
+
             </div>
             <div className='overview_card'>
-                hello
+                <strong>Profit</strong>
+
             </div>
             <div className='overview_card'>
-                hello
+                <strong>New customer</strong>
+
             </div>
         </div>
         <div className='detail_report'>
