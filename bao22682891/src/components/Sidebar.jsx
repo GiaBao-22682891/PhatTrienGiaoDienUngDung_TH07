@@ -7,26 +7,15 @@ export const Sidebar = () => {
   return (
     <div className='sidebar'>
             <img src="../public/logo.png" alt="" />
-            <nav className='head_sidebar'>
-                <div>
-                    <Link to={'/'}> Dashboard </Link>
-                </div>
-                <div>
-                    <Link to={'/project'}>Projects</Link>
-                </div>
-                <div>
-                    <Link to={'/team'}>Teams</Link>
-                </div>
-                <div>
-                    <Link to={'/analytic'}>Analytics</Link>
-                </div>
-                <div>
-                    <Link to={'/message'}>Messages</Link>
-                </div>
-                <div>
-                    <Link to={'/integration'}>Integrations</Link>
-                </div>
-            </nav>
+            <ul className='head_sidebar'>
+              <Link to={'/'} style={{textDecoration: 'none'}}> <li>Dashboard</li> </Link>
+              <Link to={'/project'} style={{textDecoration: 'none'}}> <li>Projects</li> </Link>
+              <Link to={'/team'} style={{textDecoration: 'none'}}> <li>Teams</li> </Link>
+              <Link to={'/analytic'} style={{textDecoration: 'none'}}> <li>Analytics</li> </Link>
+              <Link to={'/message'} style={{textDecoration: 'none'}}> <li>Messages</li> </Link>
+              <Link to={'/integration'} style={{textDecoration: 'none'}}> <li>Integrations</li> </Link>
+            </ul>
+            
             {/* <div className='bottom_sidebar'>
                 <img src="../public/randomPicture.png" alt="" />
                 <div>

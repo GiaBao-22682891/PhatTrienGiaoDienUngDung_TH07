@@ -25,7 +25,7 @@ export default function Dashboard() {
         const {message} = await addData(data)
 
         if (message == "ADDED") {
-            setReload(!reload)
+            setReload(reload => !reload)
         }
     }
 
@@ -135,7 +135,7 @@ export default function Dashboard() {
                 </thead>
                 <tbody>
                     {customerData.map((x) => (
-                        <CustomerList customer={x} key={x.id}/>
+                        <CustomerList customer={x} key={x.id} onReload={() => setReload(prev => !prev)}/>
                     ))}
                 </tbody>
             </table>
