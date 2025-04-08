@@ -1,7 +1,32 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import '../Page/Dashboard.css'
+import { updateData } from '../data/data';
 
 export const CustomerList = ({customer}) => {
+  const [showUpdateForm, setForm] = useState(false);
+  const [reload, setReload] = useState(false)
+  const [customerData, setCustomerData] = useState({
+    Fullname: customer.Fullname,
+    Company: customer.Company,
+    orderValue: customer.orderValue,
+    orderDate: customer.orderDate.slice(0, 10), // cắt đúng định dạng yyyy-mm-dd
+    status: customer.status,
+  });
+
+  const handleUpdate = async (customer, customerData) => {
+    const message = await updateData(customer.id, customerData)
+      if (message == "UPDATED") {
+        setReload(!reload)
+      }
+
+  }
+  
+  const onSubmitUpdate = (customer) => {
+      handleUpdate (customer, customerData)
+      setForm(false);
+    }
+
+
   return (
       <tr>
         <td className='profilename'>
@@ -21,7 +46,31 @@ export const CustomerList = ({customer}) => {
           <p> {customer.status} </p>
         </td>
         <td>
-          <img src="../pen.png" alt="" className='editbutton'/>
+          <img src="../pen.png" alt="" className='editbutton' onClick={() => setForm(true)} />
+          {showUpdateForm && (
+              <div className="modal-overlay">
+              <div className="modal">
+              <h2>Update customer</h2>
+              <form onSubmit={(e) => {
+                  e.preventDefault();
+                  // Handle form submission here
+                  setForm(false); // Close after submit
+              }}>
+                  <input type="text" value={customerData.Fullname} onChange={e => setCustomerData({...customerData, Fullname: e.target.value})} />
+                  <input type="text" value={customerData.Company} onChange={e => setCustomerData({...customerData, Company: e.target.value})} />
+                  <input type="number" value={customerData.orderValue} onChange={e => setCustomerData({...customerData, orderValue: e.target.value})} />
+                  <input type="date" value={customerData.orderDate} onChange={e => setCustomerData({...customerData, orderDate: e.target.value})} />
+                  <input type="text" value={customerData.status} onChange={e => setCustomerData({...customerData, status: e.target.value})} />
+
+
+                  <div className="modal-buttons">
+                  <button type="submit" onClick={() => onSubmitUpdate(customer)}>Save</button>
+                  <button type="button" onClick={() => setForm(false)}>Cancel</button>
+                  </div>
+              </form>
+              </div>
+              </div>
+          )}
         </td>
       </tr>
         

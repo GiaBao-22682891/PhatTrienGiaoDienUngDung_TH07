@@ -29,10 +29,33 @@ export const updateData = async (id, data) => {
             },
         );
             if (response.ok) {
-                return {message: "ADDED"}
+                return {message: "UPDATED"}
             }
     
             return {message: "Failed"};
+    }catch (error) {
+        console.error("error", error)
+    } 
+};
+
+export const addData = async (contact) => {
+    try {
+        const response = await fetch (
+            "https://67e253ad97fc65f535357730.mockapi.io/Customers",
+            {
+                method: "POST",
+                body: JSON.stringify(contact),
+                headers: {
+                    "Content-type" : "application/json"
+                }
+            }
+        );
+
+        if (response.ok) {
+            return {message: "ADDED"}
+        }
+
+        return {message: "Failed"};
     }catch (error) {
         console.error("error", error)
     } 
