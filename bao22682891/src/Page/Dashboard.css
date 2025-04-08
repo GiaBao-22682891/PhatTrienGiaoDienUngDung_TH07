@@ -34,18 +34,24 @@
 
 .head_sidebar li {
     height: 50px;
-    width: 100px;
+    width: 250px;
     display: flex;
     align-items: center;
     border-radius: 7px;
     color: black;
     font-family: Arial;
     font-weight: bold;
-    
+    padding-left: 20px;
+    gap: 7px;
+}
+
+.head_sidebar li svg{
+    height: 30px;
+    width: 30px;
 }
 
 .head_sidebar li:hover {
-    background-color: #e60073;
+    background-color: #F44B87;
     color: white;
 }
 
@@ -131,6 +137,19 @@
     /* cursor: default; */
 }
 
+/* Dashboard */
+.dashboard_content h3{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.overviewIMG {
+    height: 30px;
+    width: 30px;
+    color: #d5639c;
+}
+
 .overview_section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -163,13 +182,33 @@
     justify-content: space-between;
 }
 
+.detail_report div {
+    display: flex;
+    align-items: center;
+}
+
 .detail_report div button {
     color: #d5639c;
-    border-color: #d5639c;
+    border: solid #ff87c3;
     background-color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;             
     border-radius: 5px;
     height: 30px;
-    margin: 5px
+    margin: 5px;
+}
+
+.detail_report div button:hover {
+    color: white;
+    background-color: #ff87c3;
+}
+
+
+.reportButtonIMG {
+    color: #d5639c;
+    height: 20px;
+    width: 20px;
 }
 
 .report-table {
