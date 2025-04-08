@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './Dashboard.css'
-import {getData} from '../data/data'
+import {addData, getData} from '../data/data'
 import { CustomerList } from '../components/CustomerList';
 
 export default function Dashboard() {
     const [customerData, setData] = useState([]);
-    const [reload, setReload] = useState(false)
+    const [reload, setReload] = useState(false);
+    const [showAddForm, setShowAddForm] = useState(false);
+    const nameRef = useRef(null);
+    const companyRef = useRef(null);
+    const orderValueRef = useRef(null);
+    const dateRef = useRef(null);
+    const statusRef = useRef(null);
 
     useEffect (() => {
         const fetchData = async () => {
@@ -14,6 +20,34 @@ export default function Dashboard() {
         }
         fetchData();
     }, [reload])
+
+    const handleAdd = async (data) => {
+        const {message} = await addData(data)
+
+        if (message == "ADDED") {
+            setReload(!reload)
+        }
+    }
+
+    const onSubmit = () => {
+        if (nameRef.current && companyRef.current &&
+            orderValueRef.current && dateRef.current &&
+            statusRef.current
+        ) {
+            const customer = {
+                Fullname: nameRef.current.value,
+                Company: companyRef.current.value,
+                orderValue: orderValueRef.current.value,
+                orderDate: dateRef.current.value,
+                status: statusRef.current.value
+            }
+
+            handleAdd(customer)
+        }
+
+        
+    }
+
 
 
     console.log(customerData)
@@ -24,16 +58,24 @@ export default function Dashboard() {
             Overview
         </h3>
         <div className='overview_section'>
-            <div className='overview_card'>
-                <strong>Turnover</strong>
+            <div className='overview_card turnover'>
+                <strong style={{fontSize: '20px'}}>Turnover</strong>
+                <h1>$92,405</h1>
+                <strong style={{color: 'green'}}>▲ 5.39% </strong>
+                 period of change
+            </div>
+            <div className='overview_card profit'>
+                <strong style={{fontSize: '20px'}}>Profit</strong>
+                <h1>$32,218</h1>
+                <strong style={{color: 'green'}}>▲ 5.39% </strong>
+                 period of change
 
             </div>
-            <div className='overview_card'>
-                <strong>Profit</strong>
-
-            </div>
-            <div className='overview_card'>
-                <strong>New customer</strong>
+            <div className='overview_card profit'>
+                <strong style={{fontSize: '20px'}}>New customer</strong>
+                <h1>298</h1>
+                <strong style={{color: 'green'}}>▲ 5.39% </strong>
+                 period of change
 
             </div>
         </div>
@@ -42,6 +84,34 @@ export default function Dashboard() {
                 Detailed report
             </h3>
             <div>
+                <button onClick={() => setShowAddForm(true)}>
+                    {/* <img src="" alt="" /> */}
+                    Add customer
+                </button>
+                {showAddForm && (
+                    <div className="modal-overlay">
+                        <div className="modal">
+                        <h2>Add New Customer</h2>
+                        <form onSubmit={(e) => {
+                            e.preventDefault();
+                            // Handle form submission here
+                            setShowAddForm(false); // Close after submit
+                        }}>
+                            <input type="text" placeholder="Full Name" required ref={nameRef} />
+                            <input type="text" placeholder="Company" required ref={companyRef}/>
+                            <input type="number" placeholder="Order Value" required ref={orderValueRef}/>
+                            <input type="date" placeholder="Order Date" required ref={dateRef}/>
+                            <input type="text" placeholder="Status" required ref={statusRef}/>
+
+                            <div className="modal-buttons">
+                            <button type="submit" onClick={() => onSubmit()}>Save</button>
+                            <button type="button" onClick={() => setShowAddForm(false)}>Cancel</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                )}
+
                 <button>
                     Import
                 </button>
@@ -72,5 +142,9 @@ export default function Dashboard() {
         </div>
         
       </div>
+
+      
     );
+
+    
   }
