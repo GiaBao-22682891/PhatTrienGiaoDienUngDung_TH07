@@ -211,6 +211,20 @@
     width: 20px;
 }
 
+.scroll_container {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f9f9f9; /* or your background */
+    z-index: 1;
+  }
+
 .report-table {
     width: 100%;
     border-collapse: collapse;

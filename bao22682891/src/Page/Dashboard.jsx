@@ -139,7 +139,7 @@ export default function Dashboard() {
             </div>
         </div>
 
-        <div className="detailed-report">
+        <div className="detailed-report scroll_container">
             <table className="report-table">
                 <thead>
                     <tr className='fix_align'>
