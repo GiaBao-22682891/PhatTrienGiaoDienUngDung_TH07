@@ -17,17 +17,34 @@
     flex-direction: column;
 }
 
+.sidebar li {
+    list-style-type: none;
+}
+
 .sidebar img {
     width: 150px;
     height: 100px;
     object-fit: contain;
 }
 
-.head_sidebar {
+.head_sidebar{
     height: 30%;
+    padding: 10px;
 }
 
-.head_sidebar div:hover {
+.head_sidebar li {
+    height: 50px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    border-radius: 7px;
+    color: black;
+    font-family: Arial;
+    font-weight: bold;
+    
+}
+
+.head_sidebar li:hover {
     background-color: #e60073;
     color: white;
 }

@@ -2,9 +2,8 @@ import React, { useRef, useState } from 'react'
 import '../Page/Dashboard.css'
 import { updateData } from '../data/data';
 
-export const CustomerList = ({customer}) => {
+export const CustomerList = ({customer, onReload}) => {
   const [showUpdateForm, setForm] = useState(false);
-  const [reload, setReload] = useState(false)
   const [customerData, setCustomerData] = useState({
     Fullname: customer.Fullname,
     Company: customer.Company,
@@ -14,11 +13,10 @@ export const CustomerList = ({customer}) => {
   });
 
   const handleUpdate = async (customer, customerData) => {
-    const message = await updateData(customer.id, customerData)
-      if (message == "UPDATED") {
-        setReload(!reload)
+    const {message} = await updateData(customer.id, customerData) /*message nhớ phải có {} để lấy value ra khỏi json*/
+      if (message == "UPDATED") {  /*nếu ko bỏ vô {message} thì ta vẫn có thể làm cách message === "UPDATED"*/
+        onReload();
       }
-
   }
   
   const onSubmitUpdate = (customer) => {
@@ -64,7 +62,7 @@ export const CustomerList = ({customer}) => {
 
 
                   <div className="modal-buttons">
-                  <button type="submit" onClick={() => onSubmitUpdate(customer)}>Save</button>
+                  <button type="button" onClick={() => onSubmitUpdate(customer)}>Save</button>
                   <button type="button" onClick={() => setForm(false)}>Cancel</button>
                   </div>
               </form>
